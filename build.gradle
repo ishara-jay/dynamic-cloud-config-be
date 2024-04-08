@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.10'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'com.netflix.dgs.codegen' version '6.0.3'
+}
+
+group = 'com.alphasense'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url "https://plugins.gradle.org/m2/"
+	}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-graphql'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.1'
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.13.5'
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.5'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework:spring-webflux'
+	testImplementation 'org.springframework.graphql:spring-graphql-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+generateJava {
+	schemaPaths = ["${projectDir}/src/main/resources/graphql-client"]
+	packageName = 'com.alphasense.cloudconfiguration.codegen'
+	generateClient = true
+}
+

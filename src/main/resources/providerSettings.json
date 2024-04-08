@@ -1,0 +1,82 @@
+{
+    "providers" : [
+        {
+            "name" : "AZURE",
+            "fields" : [
+                {
+                    "label": "access-key",
+                    "regex" : "^[a-zA-Z0-9]{1,32}$",
+                    "type" : "PRIMITIVE",
+                    "required" : true
+                },{
+                    "label": "client-secret",
+                    "regex" : "^[a-zA-Z0-9]{8}$",
+                    "type" : "PRIMITIVE",
+                    "required" : true
+                },{
+                    "label": "region",
+                    "possibleValues" : ["southeast-1", "southeast-2","us-east-1"],
+                    "type" : "DROPDOWN",
+                    "required" : true
+                },{
+                    "label": "header1",
+                    "regex" : "^[a-zA-Z0-9]{16}$",
+                    "type" : "HEADER",
+                    "required" : true
+                },{
+                    "label": "header2",
+                    "regex" : "^[a-zA-Z0-9]{16}$",
+                    "type" : "HEADER",
+                    "required" : false
+                }
+            ]
+        },
+        {
+            "name" : "GCP",
+            "fields" : [
+                {
+                    "label": "access-key",
+                    "regex" : "^[a-zA-Z0-9]{1,32}$",
+                    "type" : "PRIMITIVE",
+                    "required" : true
+                },{
+                    "label": "client-secret",
+                    "regex" : "^[a-zA-Z0-9]{8}$",
+                    "type" : "PRIMITIVE",
+                    "required" : true
+                },{
+                    "label": "header1",
+                    "regex" : "^[a-zA-Z0-9]{16}$",
+                    "type" : "HEADER",
+                    "required" : true
+                },{
+                    "label": "header2",
+                    "regex" : "^[a-zA-Z0-9]{16}$",
+                    "type" : "HEADER",
+                    "required" : false
+                }
+            ]
+        },
+        {
+            "name" : "AWS",
+            "fields" : [
+                {
+                    "label": "access-key",
+                    "regex" : "^[a-zA-Z0-9]{1,32}$",
+                    "type" : "PRIMITIVE",
+                    "required" : true
+                },{
+                    "label": "client-secret",
+                    "regex" : "^[a-zA-Z0-9]{8}$",
+                    "type" : "PRIMITIVE",
+                    "required" : true
+                },{
+                    "label": "region",
+                    "possibleValues" : ["southeast-1", "southeast-2","us-east-1"],
+                    "type" : "DROPDOWN",
+                    "required" : true
+                }
+            ]
+        }
+    ]
+}
